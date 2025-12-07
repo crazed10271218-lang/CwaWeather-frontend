@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ariel看天氣</title>
+    <title>arie看看天氣</title>
     <link rel="icon" type="image/png" href="./icon-v2.png">
     <link rel="apple-touch-icon" href="./icon-v2.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./icon-v2.png">
@@ -14,16 +14,18 @@
         rel="stylesheet">
 
     <style>
-        :root {
-            --ac-green: #7BCFC3;
-            --ac-bg-pattern: #A0E7E5;
-            --ac-cream: #FFF8F2;
-            --ac-yellow: #FFB993;
-            --ac-brown: #7A54A2;
-            --ac-blue: #0077B6;
-            --ac-dark: #58504A;
-            --ac-card-border: #DDEAF3;
-        }
+    :root {
+        /* 美人魚 Ariel 海洋主題色 */
+        --ac-green: #7BDDD6;     /* 海水綠（主背景） */
+        --ac-bg-pattern: #A8F0F2;/* 海面反光淺藍（目前沒特別用到，但保留） */
+        --ac-cream: #FFF8F4;     /* 貝殼白（卡片底色） */
+        --ac-yellow: #FFB8A3;    /* 珊瑚橘（強調 / pill） */
+        --ac-brown: #7A54A2;     /* 美人魚紫（標題／重點字） */
+        --ac-blue: #0086D1;      /* 深海藍（標籤／小標） */
+        --ac-dark: #235168;      /* 深海青（一般文字） */
+        --ac-card-border: #E4F6FF; /* 貝殼光澤邊框 */
+    }
+
 
         * {
             margin: 0;
@@ -32,30 +34,48 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
-            font-family: 'Zen Maru Gothic', sans-serif;
-            background-color: var(--ac-green);
-            /* 更細緻的斜紋背景 */
-            background-image:
-                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255, 255, 255, 0.2) 20px, rgba(255, 255, 255, 0.2) 40px);
-            min-height: 100vh;
-            color: var(--ac-dark);
-            /* 防止 iOS 左右滑動 */
-            overflow-x: hidden;
-            padding-bottom: 20px;
-        }
+        /* 🌊 海洋背景 + 光澤波紋 */
+    body {
+        font-family: 'Zen Maru Gothic', sans-serif;
+        min-height: 100vh;
+        color: var(--ac-brown);
+        overflow-x: hidden;
+        padding-bottom: 20px;
 
-        /* 頂部狀態列 */
-        .status-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* 海水漸層 */
+        background:
+            linear-gradient(180deg,
+                rgba(123, 221, 214, 1) 0%,
+                rgba(104, 203, 197, 1) 50%,
+                rgba(71, 168, 185, 1) 100%);
+
+        /* 海面光斑＋細緻波紋 */
+        background-image:
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.18) 0%, transparent 50%),
+            radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.18) 0%, transparent 50%),
+            repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 25px,
+                rgba(255, 255, 255, 0.1) 25px,
+                rgba(255, 255, 255, 0.1) 50px
+            );
+    }
+
+        /* 頂部狀態列：透明海水玻璃感 */
+    .status-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.22);
+        backdrop-filter: blur(12px) saturate(180%);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 50, 80, 0.15);
         }
 
         .location-pill {
@@ -285,7 +305,7 @@
         function getWeatherIcon(weather) {
             if (!weather) return "🌤️";
             if (weather.includes("晴")) return "☀️";
-            if (weather.includes("多雲")) return "⛅";
+            if (weather.includes("多雲雲")) return "⛅";
             if (weather.includes("陰")) return "☁️";
             if (weather.includes("雨")) return "🌧️";
             if (weather.includes("雷")) return "⛈️";
