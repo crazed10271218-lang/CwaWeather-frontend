@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>森森天氣</title>
+    <title>ariel看天氣</title>
     <link rel="icon" type="image/png" href="./icon-v2.png">
     <link rel="apple-touch-icon" href="./icon-v2.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./icon-v2.png">
@@ -15,12 +15,12 @@
 
     <style>
         :root {
-            --ac-green: #7DE1A9;
+            --ac-green: #8cb49d;
             --ac-bg-pattern: #8FD8AF;
             --ac-cream: #FFFEF2;
             --ac-yellow: #F9F195;
             --ac-brown: #796452;
-            --ac-blue: #4FB5D9;
+            --ac-blue: #1b18db;
             --ac-dark: #58504A;
             --ac-card-border: #E6E0C8;
         }
@@ -264,7 +264,7 @@
         <p style="color: white; font-weight: bold; margin-top: 20px;">正在觀測雲的流動...</p>
     </div>
     <div class="status-bar">
-        <div class="location-pill">📍 桃園</div>
+        <div class="location-pill">📍 桃園 </div>
         <div id="updateTime" class="update-pill">更新中...</div>
     </div>
 
@@ -294,10 +294,10 @@
 
         function getAdvice(rainProb, maxTemp) {
             let rainIcon = "🌂";
-            let rainText = "不用帶傘";
+            let rainText = "請安心出門";
             if (parseInt(rainProb) > 30) {
                 rainIcon = "☂️";
-                rainText = "記得帶傘！";
+                rainText = "記得要帶傘喔！";
             }
 
             let clothIcon = "👕";
